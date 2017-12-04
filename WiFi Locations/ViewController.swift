@@ -18,7 +18,7 @@ class ViewController: UIViewController{
     var coordinatesArrayLatitude: [String] = []
     var coordinatesArrayLongitude: [String] = []
     var locationCoordinates: [NSManagedObject] = []
-    var numberUseToFindDecimals : Int = 100  // 100 for 2 decimals, 1000 for 3 decimals and so on
+    var numberUseToFindDecimals : Double = 100  // 100 for 2 decimals, 1000 for 3 decimals and so on
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,9 +74,9 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func toDecimals(latitude: CLLocation, longitude: CLLocation) -> (Double, Double) { // func to rond numbers to specified number of desimal points
-        
-        let latitude2Decimal : Double = Double((latitude.coordinate.latitude * 100).rounded() / 100)
-        let longitude2Decimal : Double = Double((longitude.coordinate.longitude * 100).rounded() / 100)
+
+        let latitude2Decimal : Double = Double((latitude.coordinate.latitude * numberUseToFindDecimals).rounded() / numberUseToFindDecimals)
+        let longitude2Decimal : Double = Double((longitude.coordinate.longitude * numberUseToFindDecimals).rounded() / numberUseToFindDecimals)
         //print(latitude.coordinate.latitude, longitude.coordinate.longitude)
         //print(latitude2Decimal, longitude2Decimal)
         
